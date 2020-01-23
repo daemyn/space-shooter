@@ -1,7 +1,53 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Src/Core/Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/spritesheets/ship.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "left"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "right"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "tilt"
@@ -34,9 +80,15 @@ __meta__ = {
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5
+frame = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="TiltAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
 autoplay = "tilt"
+playback_speed = 0.1
+anims/idle = SubResource( 5 )
+anims/left = SubResource( 4 )
+anims/right = SubResource( 3 )
 anims/tilt = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

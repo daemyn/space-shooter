@@ -16,8 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="SpaceShooter"
-run/main_scene="res://Src/Main/TitleScreen/TitleScreen.tscn"
+run/main_scene="res://Src/Levels/BaseLevel/BaseLevel.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=480
+window/size/height=640
 
 [rendering]
 
